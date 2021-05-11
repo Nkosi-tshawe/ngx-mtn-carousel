@@ -1,0 +1,101 @@
+    @import "./scss/variables";
+
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300;400;500;600&display=swap');
+
+    * {
+        padding:0;
+        margin:0;
+    }
+
+    h1 {
+        font-size: 32px;
+        font-weight: 400;
+        margin: 0;
+      }
+
+    .lc-wrapper {
+    height: auto !important;
+    font-family: "Work Sans", sans-serif;
+    color: $dark-grey;
+
+    .slick-track {
+      align-items: center;
+      display: flex;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      min-height: 588px;
+      transition: 0.3s;
+  
+      .slick-slide {
+        display: flex;
+        // margin-right: 24px;
+        min-height: 284px;
+        min-width: 216px;
+        transform-origin: center;
+
+        .lc__slide {
+          flex: 1 0 auto;
+          transition: all 0.2s ease-in-out;
+        }
+        &.slick-current {
+          width: 100%;
+          max-width: 360px;
+          min-height: 564px;
+          max-height: 564px;
+          .lc__slide {
+            border-bottom: 8px solid $yellow;
+            padding-left: 51px !important;
+            padding-right: 51px !important;
+            justify-content: space-evenly;
+            flex: 1 0 auto;
+          }
+  
+          .lc__slide-img {
+            width: 120px !important;
+            height: 120px !important;
+            margin-bottom: 71px !important;
+          }
+  
+          .lc__slide-link {
+            display: block;
+            color: $dark-grey;
+            text-transform: uppercase;
+          }
+  
+          .lc__slide-title {
+            margin-bottom: 51px;
+  
+            h3 {
+              font-weight: 600 !important;
+              font-size: 40px !important;
+              line-height: 58px !important;
+              max-width: 250px !important;
+            }
+          }
+  
+          .lc__slide-link {
+            display: block !important;
+            transition: 0.3s;
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  
+  @media screen and (min-width: "426px") {
+    .lc-wrapper {
+      .slick-track {
+        .slick-slide {
+          &.slick-current {
+            max-width: 456px;
+          }
+        }
+      }
+    }
+  }
+  
+  @media screen and (min-width: "1200px") {
+    .container {}
+  }
+  
