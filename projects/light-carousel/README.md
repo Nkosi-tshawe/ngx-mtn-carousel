@@ -1,24 +1,155 @@
-# LightCarousel
+# MtnCarousel
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.13.
+## Install
 
-## Code scaffolding
+```bash
+npm install ngx-slickjs
+npm install @tagron/light-carousel
+```
 
-Run `ng generate component component-name --project light-carousel` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project light-carousel`.
-> Note: Don't forget to add `--project light-carousel` or else it will be added to the default project in your `angular.json` file. 
+### Sub Module Import
 
-## Build
+```typescript
+import { NgxSlickJsModule } from "ngx-slickjs";
+import { LightCarouselModule } from "@tagron/light-carousel";
 
-Run `ng build light-carousel` to build the project. The build artifacts will be stored in the `dist/` directory.
+@NgModule({
+  imports: [
+    // ...
+    NgxSlickJsModule,
+    LightCarouselModule,
+  ],
+})
+export class AnotherModule {}
+```
 
-## Publishing
+### Scripts and styles urls
 
-After building your library with `ng build light-carousel`, go to the dist folder `cd dist/light-carousel` and run `npm publish`.
+forRoot Options:
 
-## Running unit tests
+| Property      | Default                                                                 |
+| ------------- | ----------------------------------------------------------------------- |
+| jquery        | https://code.jquery.com/jquery-3.4.0.min.js                             |
+| slickJs       | https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js    |
+| slickCss      | https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css       |
+| slickThemeCss | https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css |
 
-Run `ng test light-carousel` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Note: The above urls are download lazy. The urls don't increase initial opening time.
 
-## Further help
+Example:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```typescript
+import { NgxSlickJsModule } from "ngx-slickjs";
+
+@NgModule({
+  imports: [
+    // ...
+    NgxSlickJsModule.forRoot({
+      links: {
+        jquery: "https://code.jquery.com/jquery-3.4.0.min.js",
+        slickJs:
+          "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js",
+        slickCss:
+          "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css",
+        slickThemeCss: null, // if you are set null, this css won't load
+      },
+    }),
+  ],
+})
+export class AppModule {}
+```
+
+## Usage
+
+Import module to your main module
+
+```typescript
+import { NgxSlickJsModule } from "ngx-slickjs";
+
+@NgModule({
+  imports: [
+    // ...
+    NgxSlickJsModule.forRoot(),
+  ],
+})
+export class AppModule {}
+```
+
+Import Slick to your component
+
+```typescript
+import { Slick } from "ngx-slickjs";
+
+// Slick config example
+this.config = {
+  slidesToShow: 1,
+  arrows: false,
+  centerMode: true,
+  variableWidth: true,
+  adaptiveHeight: false,
+  infinite: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: "40px",
+        adaptiveHeight: false,
+        slidesToShow: 1,
+      },
+    },
+    {
+      breakpoint: 999,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: "40px",
+        adaptiveHeight: false,
+        slidesToShow: 1,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: "40px",
+        adaptiveHeight: false,
+        slidesToShow: 5,
+      },
+    },
+  ],
+};
+
+// Slide Items example.
+
+this.slideItems = [
+  {
+    id: 1,
+    title: "Mobile Internet",
+  },
+  {
+    id: 2,
+    title: "Home Internet",
+  },
+  {
+    id: 3,
+    title: "Get a device",
+  },
+  {
+    id: 4,
+    title: "Add a phone-line",
+  },
+  {
+    id: 5,
+    title: "Upgrade",
+  },
+];
+```
+
+```html
+<mtn-light-carousel [configOptions]="options" [slideItems]="">
+  <h1>Title</h1>
+</mtn-light-carousel>
+```
