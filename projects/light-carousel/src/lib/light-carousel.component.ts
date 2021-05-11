@@ -59,6 +59,7 @@ export class LightCarouselComponent implements OnInit ,AfterViewInit{
   @Input() slideItems: any = [];
   @Input() configOptions:any;
   @ViewChild('nextSlide') nextSlide;
+  subtitle;
 
   // Public methods
   public ngOnInit() {
