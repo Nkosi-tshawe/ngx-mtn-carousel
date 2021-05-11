@@ -1,27 +1,82 @@
 # MtnCarousel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+## Install
 
-## Development server
+```bash
+npm install ngx-slickjs
+npm install mtn-carousel
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Sub Module Import
 
-## Code scaffolding
+```typescript
+import { NgxSlickJsModule } from "ngx-slickjs";
+import { LightCarouselModule } from "light-carousel";
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@NgModule({
+  imports: [
+    // ...
+    NgxSlickJsModule,
+    LightCarouselModule,
+  ],
+})
+export class AnotherModule {}
+```
 
-## Build
+### Scripts and styles urls
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+forRoot Options:
 
-## Running unit tests
+| Property      | Default                                                                 |
+| ------------- | ----------------------------------------------------------------------- |
+| jquery        | https://code.jquery.com/jquery-3.4.0.min.js                             |
+| slickJs       | https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js    |
+| slickCss      | https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css       |
+| slickThemeCss | https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css |
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Note: The above urls are download lazy. The urls don't increase initial opening time.
 
-## Running end-to-end tests
+Example:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```typescript
+import { NgxSlickJsModule } from "ngx-slickjs";
 
-## Further help
+@NgModule({
+  imports: [
+    // ...
+    NgxSlickJsModule.forRoot({
+      links: {
+        jquery: "https://code.jquery.com/jquery-3.4.0.min.js",
+        slickJs:
+          "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js",
+        slickCss:
+          "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css",
+        slickThemeCss: null, // if you are set null, this css won't load
+      },
+    }),
+  ],
+})
+export class AppModule {}
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Usage
+
+Import module to your main module
+
+```typescript
+import { NgxSlickJsModule } from "ngx-slickjs";
+
+@NgModule({
+  imports: [
+    // ...
+    NgxSlickJsModule.forRoot(),
+  ],
+})
+export class AppModule {}
+```
+
+```html
+<mtn-light-carousel configOptions="options">
+  <h1>Title</h1>
+</mtn-light-carousel>
+```
