@@ -300,7 +300,7 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
   }
 
   setScreenSize() {
-    if (window.innerWidth >= 1400) {
+    if (window.innerWidth >= 1200) {
       this.carouselDisplaying = 5;
     } else if (window.innerWidth >= 768) {
       this.carouselDisplaying = 3;
