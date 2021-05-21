@@ -4,14 +4,14 @@
 
 ```bash
 npm install ngx-slickjs
-npm install mtn-carousel
+npm install @tagron/light-carousel
 ```
 
 ### Sub Module Import
 
 ```typescript
 import { NgxSlickJsModule } from "ngx-slickjs";
-import { LightCarouselModule } from "light-carousel";
+import { LightCarouselModule } from "@tagron/light-carousel";
 
 @NgModule({
   imports: [
@@ -75,8 +75,81 @@ import { NgxSlickJsModule } from "ngx-slickjs";
 export class AppModule {}
 ```
 
+Import Slick to your component
+
+```typescript
+import { Slick } from "ngx-slickjs";
+
+// Slick config example
+this.config = {
+  slidesToShow: 1,
+  arrows: false,
+  centerMode: true,
+  variableWidth: true,
+  adaptiveHeight: false,
+  infinite: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: "40px",
+        adaptiveHeight: false,
+        slidesToShow: 1,
+      },
+    },
+    {
+      breakpoint: 999,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: "40px",
+        adaptiveHeight: false,
+        slidesToShow: 1,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        arrows: true,
+        centerMode: true,
+        centerPadding: "40px",
+        adaptiveHeight: false,
+        slidesToShow: 5,
+      },
+    },
+  ],
+};
+
+// Slide Items example.
+
+this.slideItems = [
+  {
+    id: 1,
+    title: "Mobile Internet",
+  },
+  {
+    id: 2,
+    title: "Home Internet",
+  },
+  {
+    id: 3,
+    title: "Get a device",
+  },
+  {
+    id: 4,
+    title: "Add a phone-line",
+  },
+  {
+    id: 5,
+    title: "Upgrade",
+  },
+];
+```
+
 ```html
-<mtn-light-carousel configOptions="options">
+<mtn-light-carousel [configOptions]="options" [slideItems]="">
   <h1>Title</h1>
 </mtn-light-carousel>
 ```
