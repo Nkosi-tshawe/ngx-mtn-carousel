@@ -21,7 +21,6 @@
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
     "@tagron/light-carousel": "^1.0.0",
-    "ngx-slickjs": "^1.5.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
@@ -50,12 +49,7 @@
   },
   "keywords": [
     "angular",
-    "ngx-slickjs",
     "mtn-carousel",
-    "ngx",
-    "slick",
-    "slickjs",
-    "slick-carousel",
     "carousel",
     "lazy-loading"
   ]

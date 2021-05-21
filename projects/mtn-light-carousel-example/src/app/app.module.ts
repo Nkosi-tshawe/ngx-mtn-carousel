@@ -3,25 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { LightCarouselModule } from '@tagron/light-carousel';
-import {NgxSlickJsModule } from 'ngx-slickjs';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    LightCarouselModule,
-    NgxSlickJsModule.forRoot({
-      links: {
-        jquery: "https://code.jquery.com/jquery-3.4.0.min.js",
-        slickJs: "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js",
-        slickCss: "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css",
-        slickThemeCss: "https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
-      }
-  })
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule, LightCarouselModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
