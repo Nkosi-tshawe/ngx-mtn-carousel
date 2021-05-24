@@ -91,7 +91,7 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
       lastSlide.style.left = -this.lengthOfSlide + 'px';
     } else if (this.carouselDisplaying == 3) {
     } else {
-      lastSlide.style.left = -this.lengthOfSlide + 230 + 'px';
+      lastSlide.style.left = -this.lengthOfSlide + 220 + 'px';
     }
     this.carouselContent.insertBefore(
       lastSlide,
@@ -145,23 +145,45 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
           'green-border',
           'active'
         );
-        if (i == 2) {
-          el.classList.add('green-border');
-          el.style.left = width + 90 + 'px';
-        } else if (i == 1) {
-          el.classList.add('red-border', 'active');
-          el.style.left = width + 30 + 'px';
-        } else if (i == 0) {
-          el.classList.add('blue-border');
-          el.style.left = width - 30 + 'px';
-        } else if (i == 3) {
-          el.classList.add('green-border');
-          el.style.left = width + 150 + 'px';
-        } else if (i == 4) {
-          el.classList.add('green-border');
-          el.style.left = width + 'px';
+        if (window.innerWidth >= 1024) {
+          if (i == 2) {
+            el.classList.add('green-border');
+            el.style.left = width + 110 + 'px';
+          } else if (i == 1) {
+            el.classList.add('red-border', 'active');
+            el.style.left = width + 70 + 'px';
+          } else if (i == 0) {
+            el.classList.add('blue-border');
+            el.style.left = width + 30 + 'px';
+          } else if (i == 3) {
+            el.classList.add('green-border');
+            el.style.left = width + 150 + 'px';
+          } else if (i == 4) {
+            el.classList.add('green-border');
+            el.style.left = width + 'px';
+          } else {
+            el.classList.add('purple-border');
+            el.style.left = width + 'px';
+          }
         } else {
-          el.style.left = 0 + 'px';
+          if (i == 2) {
+            el.classList.add('green-border-first');
+            el.style.left = width + 135 + 'px';
+          } else if (i == 1) {
+            el.classList.add('red-border', 'active');
+            el.style.left = width + 30 + 'px';
+          } else if (i == 0) {
+            el.classList.add('blue-border');
+            el.style.left = width - 80 + 'px';
+          } else if (i == 3) {
+            el.classList.add('green-border');
+            el.style.left = width + 150 + 'px';
+          } else if (i == 4) {
+            el.classList.add('green-border');
+            el.style.left = width + 'px';
+          } else {
+            el.style.left = width + 'px';
+          }
         }
 
         width += lengthOfSlide;
@@ -173,23 +195,24 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
           'red-border',
           'blue-border',
           'green-border',
+          'purple-border',
+          'yellow-border',
           'active'
         );
         if (i == 2) {
-          el.classList.add('red-border');
+          el.classList.add('yellow-border');
           el.style.left = width + 'px';
         } else if (i == 1) {
           el.classList.add('blue-border');
           el.style.left = width + 'px';
         } else if (i == 0) {
           el.classList.add('red-border', 'active');
-          el.style.left = width + 115 + 'px';
+          el.style.left = width + 110 + 'px';
         } else if (i == 3) {
           el.classList.add('green-border');
-          el.style.left = width + 150 + 'px';
+          el.style.left = width + 100 + 'px';
         } else if (i == 4) {
-          el.classList.add('green-border');
-          el.style.left = width + 'px';
+          el.style.left = width + 30 + 'px';
         } else {
           el.style.left = 0 + 'px';
         }
@@ -216,6 +239,8 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
     this.carouselContent = document.querySelector('.carousel-content');
     this.slides = document.querySelectorAll('.slide');
     this.arrayOfSlides = Array.prototype.slice.call(this.slides);
+    console.log('Window inner width: ', window.innerWidth);
+    console.log('Carousel width ', this.carousel.offsetWidth);
 
     this.setScreenSize(window.innerWidth);
     this.moveSlidesRight();
@@ -263,22 +288,43 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
           'red-border',
           'blue-border',
           'green-border',
+          'yellow-border',
+          'purple-border',
           'active'
         );
-        if (i == 2) {
-          el.classList.add('red-border', 'active');
-          el.style.left = maxWidth - 30 + 'px';
-        } else if (i == 3) {
-          el.classList.add('blue-border');
-          el.style.left = maxWidth - 110 + 'px';
-        } else if (i == 4) {
-          el.classList.add('green-border');
-          el.style.left = maxWidth + 'px';
-        } else if (i == 0) {
-          el.classList.add('green-border');
-          el.style.left = maxWidth + 80 + 'px';
+        if (window.innerWidth >= 1024) {
+          if (i == 2) {
+            el.classList.add('red-border', 'active');
+            el.style.left = maxWidth + 15 + 'px';
+          } else if (i == 3) {
+            el.classList.add('blue-border');
+            el.style.left = maxWidth - 50 + 'px';
+          } else if (i == 4) {
+            el.classList.add('green-border');
+            el.style.left = maxWidth + 'px';
+          } else if (i == 0) {
+            el.classList.add('green-border');
+            el.style.left = maxWidth + 80 + 'px';
+          } else {
+            el.classList.add('purple-border');
+            el.style.left = maxWidth + 70 + 'px';
+          }
         } else {
-          el.style.left = maxWidth + 50 + 'px';
+          if (i == 2) {
+            el.classList.add('red-border', 'active');
+            el.style.left = maxWidth - 30 + 'px';
+          } else if (i == 3) {
+            el.classList.add('yellow-border');
+            el.style.left = maxWidth - 170 + 'px';
+          } else if (i == 4) {
+            el.classList.add('purple-border');
+            el.style.left = maxWidth + 'px';
+          } else if (i == 0) {
+            el.classList.add('green-border');
+            el.style.left = maxWidth + 80 + 'px';
+          } else {
+            el.style.left = maxWidth + 110 + 'px';
+          }
         }
       });
     } else {
@@ -295,24 +341,24 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
           el.style.left = maxWidth - 65 + 'px';
         } else if (i == 3) {
           el.classList.add('red-border', 'active');
-          el.style.left = maxWidth + 35 + 'px';
+          el.style.left = maxWidth + 25 + 'px';
         } else if (i == 4) {
           el.classList.add('green-border');
           el.style.left = maxWidth + 100 + 'px';
         } else if (i == 0) {
-          el.classList.add('green-border');
-          el.style.left = maxWidth + 80 + 'px';
+          el.classList.add('purple-border');
+          el.style.left = maxWidth + 110 + 'px';
         } else {
-          el.style.left = maxWidth + 'px';
+          el.style.left = maxWidth - 50 + 'px';
         }
       });
     }
   }
 
   setScreenSize(width: number) {
-    if (width >= 1200) {
+    if (width >= 1440) {
       this.carouselDisplaying = 5;
-    } else if (width >= 768 && width < 1200) {
+    } else if (width >= 768 && width < 1440) {
       this.carouselDisplaying = 3;
     } else {
       this.carouselDisplaying = 1;
@@ -325,10 +371,10 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
     var slidesArray = Array.prototype.slice.call(slides);
 
     this.lengthOfSlide =
-      this.carousel.offsetWidth / this.carouselDisplaying - 10;
+      this.carouselContent.offsetWidth / this.carouselDisplaying - 10;
 
-    let lengthOfSlide = this.lengthOfSlide;
-    let initialWidth = -this.lengthOfSlide;
+    var lengthOfSlide = this.lengthOfSlide;
+    var initialWidth = -this.lengthOfSlide;
     let width = this.lengthOfSlide - 35;
 
     if (this.carouselDisplaying >= 3) {
@@ -342,6 +388,7 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
     } else {
       slidesArray.forEach(function (el, i) {
         if (lengthOfSlide > 0) {
+          console.log('3 Slide items');
           el.style.width = width / 2 + 'px';
           el.style.left = el.offsetWidth + 'px';
           initialWidth += lengthOfSlide;

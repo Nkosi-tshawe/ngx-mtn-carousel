@@ -9,6 +9,9 @@
 .lc-wrapper {
   position: relative;
   height: auto !important;
+  max-width: 1416px;
+  margin-left: auto;
+  margin-right: auto;
 
   .lc-title {
     padding-left: 0;
@@ -30,23 +33,30 @@
   .carousel-content {
     position: relative;
     overflow: hidden;
-    max-width: 1416px;
     margin: 0 auto;
     transition: width 0.4s;
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   // .red-border {
-  //   border:1px solid red;
+  //   border: 1px solid red;
   // }
 
   // .blue-border {
-  //   border:1px solid blue;
+  //   border: 1px solid blue;
   // }
   // .green-border {
-  //   border:1px solid green;
+  //   border: 1px solid green;
+  // }
+  // .purple-border {
+  //   border: 1px solid purple;
+  // }
+
+  // .yellow-border {
+  //   border: 1px solid yellow;
   // }
 
   .nav-wrapper {
@@ -162,7 +172,7 @@
       min-height: 72px;
 
       h3 {
-        font-size: 20px;
+        font-size: 15px;
         font-weight: 500;
         max-width: 126px;
         word-break: break-word;
@@ -174,6 +184,8 @@
     }
     .lc__slide-link {
       display: none;
+      align-items: center;
+      margin: 0 auto;
       cursor: pointer;
       letter-spacing: 0.2px;
       color: $dark-grey;
@@ -182,6 +194,7 @@
       font-weight: bold;
       transform: scale(0.7);
       text-decoration: none;
+      font-size: 13px;
 
       &:after {
         border-bottom: 2px solid $dark-grey;
@@ -209,7 +222,7 @@
       border-bottom: 4px solid $yellow;
       transform: scale(1.8) translateZ(0px);
       .lc__slide-link {
-        display: block;
+        display: flex;
       }
       .lc__slide-title {
         h3 {
@@ -224,10 +237,20 @@
   .lc-wrapper {
     .slide {
       &.active {
-        transform: scale(1.6) translateZ(0px);
+        transform: scale(1.9) translateZ(0px);
         .lc__slide-link {
           display: block;
+          font-size: 20px;
         }
+      }
+      .lc__slide-title {
+        h3 {
+          font-size: 20px;
+        }
+      }
+
+      .lc__slide-link {
+        font-size: 20px;
       }
     }
 
@@ -245,8 +268,12 @@
   }
 }
 
-@media screen and (min-width: "1200px") {
+@media screen and (min-width: "1024px") {
   .lc-wrapper {
+    .lc-title {
+      padding-left: 30px;
+    }
+
     .slide {
       &.active {
         transform: scale(2) translateZ(0px);
@@ -259,10 +286,10 @@
     .nav-wrapper {
       .nav {
         &.nav-left {
-          left: 25%;
+          left: 12%;
         }
         &.nav-right {
-          right: 24%;
+          right: 12%;
         }
       }
     }
@@ -274,7 +301,6 @@
     .lc-title {
       top: 135px;
       text-align: left;
-      padding-left: 40px;
     }
   }
 }
@@ -296,10 +322,21 @@
   .lc-wrapper {
     .lc-title {
       position: relative;
-      padding-left: 19%;
+      padding-left: 18%;
 
       h3 {
         line-height: 35px;
+      }
+    }
+
+    .nav-wrapper {
+      .nav {
+        &.nav-left {
+          left: 25%;
+        }
+        &.nav-right {
+          right: 25%;
+        }
       }
     }
   }
