@@ -1,6 +1,6 @@
 {
   "name": "@tagron/light-carousel",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "peerDependencies": {
     "@angular/common": "^9.1.13",

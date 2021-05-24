@@ -6,21 +6,22 @@ import {
   AfterViewInit,
   ViewChild,
   AfterContentInit,
+  HostListener,
 } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'mtn-light-carousel',
   template: `
-    <div class="lc-wrapper">
+    <div class="lc-wrapper" *ngIf="isLoaded">
       <div class="lc-title">
         <ng-content></ng-content>
       </div>
       <div class="carousel">
         <div class="carousel-content">
-          <div *ngFor="let item of slideItems" class="slide">
+          <div *ngFor="let item of items" class="slide">
             <picture class="lc__slide-img">
-              <img src="item.src" />
+              <img src="{{ item.src }}" />
             </picture>
             <div class="lc__slide-title">
               <h3>{{ item.title }}</h3>
@@ -30,8 +31,12 @@ import { fromEvent, Observable, Subscription } from 'rxjs';
         </div>
       </div>
       <div class="nav-wrapper">
-        <a (click)="moveRight()" class="nav nav-left"></a>
-        <a (click)="moveLeft()" class="nav nav-right"></a>
+        <button (click)="moveRight()" class="nav nav-left">
+          <img src="assets/images/arrow_back.svg" />
+        </button>
+        <button (click)="moveLeft()" class="nav nav-right">
+          <img src="assets/images/arrow_forward.svg" />
+        </button>
       </div>
     </div>
   `,
@@ -54,9 +59,10 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
   public initialWidth;
   public firstSlide;
   public moving = true;
+  public isLoaded = true;
 
   @Input() title: string = '';
-  @Input() slideItems: any = [];
+  @Input() items: any = [];
   @Input() configOptions: any;
   @ViewChild('nextSlide') nextSlide;
   subtitle;
@@ -76,11 +82,6 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.initializeCarousel();
-    // window.addEventListener('resize', this.initializeCarousel);
-    this.resizeObservable$ = fromEvent(window, 'resize');
-    this.resizeSubscription$ = this.resizeObservable$.subscribe((evt) => {
-      this.initializeCarousel();
-    });
   }
 
   private addElClone() {
@@ -198,16 +199,25 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
     this.addElClone();
   }
 
-  // @HostListener('window:resize')
+  @HostListener('window:resize', ['$event'])
+  public onResize(event) {
+    this.isLoaded = false;
+    setTimeout(() => {
+      this.isLoaded = true;
+    }, 0);
+
+    setTimeout(() => {
+      this.initializeCarousel();
+    }, 1);
+  }
+
   public initializeCarousel() {
     this.carousel = document.querySelector('.carousel');
     this.carouselContent = document.querySelector('.carousel-content');
     this.slides = document.querySelectorAll('.slide');
     this.arrayOfSlides = Array.prototype.slice.call(this.slides);
-    this.carouselContent.addEventListener('mousedown', (e) =>
-      this.seeMovement(e)
-    );
-    this.setScreenSize();
+
+    this.setScreenSize(window.innerWidth);
     this.moveSlidesRight();
     this.moveLeft();
   }
@@ -299,10 +309,10 @@ export class LightCarouselComponent implements OnInit, AfterViewInit {
     }
   }
 
-  setScreenSize() {
-    if (window.innerWidth >= 1200) {
+  setScreenSize(width: number) {
+    if (width >= 1200) {
       this.carouselDisplaying = 5;
-    } else if (window.innerWidth >= 768) {
+    } else if (width >= 768 && width < 1200) {
       this.carouselDisplaying = 3;
     } else {
       this.carouselDisplaying = 1;

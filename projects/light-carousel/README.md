@@ -20,7 +20,7 @@ import { LightCarouselModule } from "light-carousel";
 })
 ```
 
-Import Slick to your component
+Assign slide items in your component
 
 ```typescript
 // Slide Items example.
@@ -29,38 +29,38 @@ this.slideItems = [
   {
     id: 1,
     title: "Mobile Internet",
-    src: "https://imageurl.com",
+    src: "https://via.placeholder.com/600",
     url: "http://linkurl.com",
   },
   {
     id: 2,
     title: "Home Internet",
-    src: "https://imageurl.com",
+    src: "https://via.placeholder.com/600",
     url: "http://linkurl.com",
   },
   {
     id: 3,
     title: "Get a device",
-    src: "https://imageurl.com",
+    src: "https://via.placeholder.com/600",
     url: "http://linkurl.com",
   },
   {
     id: 4,
     title: "Add a phone-line",
-    src: "https://imageurl.com",
+    src: "https://via.placeholder.com/600",
     url: "http://linkurl.com",
   },
   {
     id: 5,
     title: "Upgrade",
-    src: "https://imageurl.com",
+    src: "https://via.placeholder.com/600",
     url: "http://linkurl.com",
   },
 ];
 ```
 
 ```html
-<mtn-light-carousel [configOptions]="options" [slideItems]="">
-  <h1>Title</h1>
+<mtn-light-carousel [configOptions]="options" [items]="slideItems">
+  <h1>Slide Title</h1>
 </mtn-light-carousel>
 ```

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `<mtn-light-carousel [slideItems]="slideItems">
+  template: `<mtn-light-carousel [items]="slideItems">
     <h1>What are you<br /><b>here to do?</b></h1>
   </mtn-light-carousel>`,
   styleUrls: ['./app.component.scss'],
